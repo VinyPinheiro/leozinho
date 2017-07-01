@@ -1,0 +1,16 @@
+<h1>Cadastrar novo membro</h1>
+<%= form_for @user, url: users_create_path do |f| %>
+  <p>
+    <%= f.label :email, 'Email' %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :password , 'Senha'%><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation, 'Confirmação de Senha' %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p class="btn btn-default btn-success"><%= f.submit %></p>
+<% end %>

@@ -1,0 +1,11 @@
+<h1>Editar dados</h1>
+
+<%= form_for @user, url: users_update_path do |f| %>
+  <%= f.label :email, 'Email' %><br />
+  <%= f.text_field :email %><br />
+  <%= f.label :password , 'Senha'%><br />
+  <%= f.password_field :password %><br />
+  <%= f.label :password_confirmation, 'Confirmação de Senha' %><br />
+  <%= f.password_field :password_confirmation %><br />
+  <%= f.submit 'Alterar'%>
+<% end -%>

@@ -1,0 +1,19 @@
+<h1>Todos os produtos</h1>
+
+<%= link_to 'Cadastrar Novo', products_new_path %>
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Quantidade</th>
+    <th>Alterar</th>
+    <th>Apagar</th>
+  </tr>
+  <% @products.each do |product|%>
+    <tr>
+    <td><%= product.name %></td>
+    <td><%= product.amount %></td>
+    <td><%= link_to image_tag('icon_edit.png'), products_edit_path(product.id) %></td>
+    <td><%= link_to image_tag('icon_trash.png'), products_destroy_path(product.id), data: {confirm: "Esta ação não poderá mais ser desfeita. Tem certeza que deseja continuar?"} %></td>
+    </tr>
+  <% end %>
+</table>

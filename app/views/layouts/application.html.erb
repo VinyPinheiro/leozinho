@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Locacao</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class='alertContainer'>
+    <% flash.each do |key, value| %>
+      <div class='alert alert-<%= key %>'><%= value %></div>
+    <% end %>
+  </div>
+	  <div id='user_nav'>
+	  <% if current_user %>
+	    Logged in as <%= current_user.email %>.
+      <ul>
+        <li>Usuários
+          <ul>
+            <li><%= link_to 'Cadastrar Novo', users_new_path %></li>
+            <li><%= link_to 'Alterar Minha Conta', users_edit_path %></li>
+            <% unless total_users == 1 %>
+              <li><%= link_to 'Apagar minha conta', users_destroy_path, data: {confirm: 'Esta ação não poderá mais ser desfeita. Tem certeza que deseja continuar?'} %></li>
+            <% end -%>
+  	      </ul>
+        </li>
+
+        <li><%= link_to 'Produtos', products_index_path %></li>
+        <li><a href='#'>Clientes</a></li>
+        <li><a href='#'>Alocação</a></li>
+
+        <li><%= link_to 'Log out', log_out_path %></li>
+      </ul>
+	  <% else %>
+	    <%= link_to 'log in', log_in_path %>
+	  <% end %>
+	</div>
+    <%= yield %>
+  </body>
+</html>
