@@ -5,6 +5,8 @@ class AllocationsController < ApplicationController
   end
 
   def create
+    @products = Product.all
+    @clients = Client.all
     allocation = Allocation.new(allocation_date: params[:allocation_date],
                                 return_date:  nil,
                                 client_id: params[:client])
@@ -29,7 +31,7 @@ class AllocationsController < ApplicationController
     allocation.update_attribute('return_date', DateTime.now.to_date)
     allocation.product_allocation.each do |product_allocation|
       product = product_allocation.product
-      product.update_attribute('amount', product.amount + product_allocation.amount)
+      product.update(amount: product.amount + product_allocation.amount)
     end
       redirect_to clients_index_path, flash: { success: 'Devolução feita com sucesso!' }
   end
