@@ -1,2 +1,10 @@
-<h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
+<h1>Alterar Produto</h1>
+
+<%= form_for @product, url: products_update_path(@product.id) do |f| %>
+  <%= f.label :name, 'Nome' %><br>
+  <%= f.text_field :name %><br>
+  <%= f.label :amount, 'Quantidade'%><br>
+  <%= f.text_field :amount %><br>
+  <%= f.submit, 'Alterar' %>
+
+<% end %>

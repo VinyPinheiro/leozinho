@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20170701052410) do
   create_table "allocations", force: :cascade do |t|
     t.datetime "allocation_date"
     t.datetime "return_date"
-    t.integer  "amount"
     t.integer  "client_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
@@ -34,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170701052410) do
   create_table "product_allocations", force: :cascade do |t|
     t.integer "allocation_id"
     t.integer "product_id"
+    t.integer "amount"
     t.index ["allocation_id"], name: "index_product_allocations_on_allocation_id"
     t.index ["product_id"], name: "index_product_allocations_on_product_id"
   end

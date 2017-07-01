@@ -1,0 +1,26 @@
+<h1>Fazer Locação</h1>
+
+<%= form_for :allocation, url: allocations_create_path do |f| %>
+  <%= label_tag 'Cliente' %><br />
+  <%= select_tag :client, options_from_collection_for_select(@clients, "id", "name") %><br />
+
+  <%= label_tag 'Data do Empréstimo' %><br />
+  <%= date_field_tag :allocation_date %><br />
+
+  <hr>
+  <h2>Produtos</h2>
+  <table>
+    <tr>
+      <th>Produto</th>
+      <th>Quantidade Necessária</th>
+    </tr>
+    <% @products.each_with_index do |product, index| %>
+      <tr>
+        <td><%= label_tag '', "#{product.name}:", :readonly => true %></td>
+        <%= hidden_field_tag "product[id][#{index}]", product.id %>
+        <td><%= text_field_tag "product[amount][#{index}]", 0 %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= f.submit 'Salvar' %>
+<% end %>

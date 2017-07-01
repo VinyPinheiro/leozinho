@@ -1,0 +1,42 @@
+<h1>Cliente</h1>
+<hr>
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Endereço</th>
+    <th>Telefone</th>
+    <th>CPF</th>
+  </tr>
+  <tr>
+    <td><%= @client.name %></td>
+    <td><%= @client.address %></td>
+    <td><%= @client.phone %></td>
+    <td><%= @client.cpf %></td>
+  </tr>
+</table>
+
+<h1>Locações Feitas</h1>
+<hr>
+
+<table>
+  <tr>
+    <th>Data do Empréstimo</th>
+    <th>Data da devolução</th>
+    <th>Produto(quantidade)</th>
+  </tr>
+  <% @client.allocation.each do |allocation|%>
+    <tr>
+      <td><%= allocation.allocation_date.to_date %></td>
+      <% unless allocation.return_date.nil? %>
+        <td><%= allocation.return_date.to_date %></td>
+      <% else %>
+        <td><%= link_to 'Devolução', allocations_devolution_path(allocation.id) %></td>>
+      <% end %>
+      <td>
+        <% allocation.product_allocation.each do |product_allocation| %>
+          <%= product_allocation.product.name %>(<%= product_allocation.amount %>)<br>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

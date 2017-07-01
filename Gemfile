@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+# cpf validate
+gem "validators"
+gem 'cpf_cnpj'
+# phone validate
+gem 'phonelib'
 # Use bootstrap
 gem 'bootstrap'
 # bcrypt

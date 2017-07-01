@@ -3,6 +3,7 @@ class CreateProductAllocations < ActiveRecord::Migration[5.0]
     create_table :product_allocations do |t|
       t.references :allocation, foreign_key:true
       t.references :product, foreign_key:true
+      t.integer :amount
     end
   end
 end
